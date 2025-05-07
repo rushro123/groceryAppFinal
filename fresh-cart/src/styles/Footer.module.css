@@ -1,0 +1,98 @@
+.footer{
+    width: 100%;
+}
+.footerMain{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:4rem 0 ;
+    background-image: url("https://res.cloudinary.com/dpfspbjyk/image/upload/v1745574141/footer_gamamu.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+
+}
+.footerHolder{
+    width: 90%;
+   
+}
+.footerNav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0 0 0;
+    
+}
+.footerNavHolder{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    padding: 2rem 0;
+    justify-content: space-between;
+    align-items: center;
+    border-top:1px solid #fff;
+}
+.footerFlex{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    row-gap: 1rem;
+}
+/* width: calc(22% - calc(var(--DTGutter_Width) / 2)) */
+.footItems{
+    
+    width: calc(20.3% - calc(var(--DT_Blog_Gutter_Width) / 2));
+    
+}
+.footItems:nth-child(1){
+    
+    width: calc(23% - calc(var(--DT_Blog_Gutter_Width) / 2));
+    
+}
+.footerIconHolder{
+    display: flex;
+    column-gap: 1rem;
+}
+.footerIconHolder svg{
+    border: 1px solid #fff;
+    width: 1.8rem;
+    height: auto;
+    padding: .3rem;
+    border-radius: 50%;
+    transition: all .5s;
+    cursor: pointer;
+}
+.footerIconHolder svg:hover{
+    fill: var(--DTPrimaryColor);
+    border: 1px solid var(--DTPrimaryColor);
+}
+@media only screen and (max-width: 1000px) {
+    .footItems{
+        width: calc(50% - calc(var(--DT_Blog_Gutter_Width) / 2));
+    }
+    .footItems:nth-child(1){
+    
+        width: calc(50% - calc(var(--DT_Blog_Gutter_Width) / 2));
+        
+    }
+}
+@media only screen and (max-width: 600px) {
+    .footItems{
+        width: 100%;
+    }
+    .footItems:nth-child(1){
+    
+        width: 100%;
+        
+    }
+    .footerNavHolder{
+
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+}

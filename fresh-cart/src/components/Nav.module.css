@@ -1,0 +1,120 @@
+.swiperNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   align-items: center;
+   position: absolute;
+    z-index: 50;
+   top: 0;
+   left: 0;
+   width: 100%;
+   padding: .5rem 1rem;
+   width: 100%;
+   top: 5rem;
+   left: 0;
+   transition: all .5s ease;
+}
+.background{
+    z-index: 10;
+    background-image: linear-gradient(0deg ,rgba(63, 115, 10,.5),rgba(63, 115, 10,.5));
+}
+.stickyNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   align-items: center;
+    position: sticky;
+    z-index: 500;
+    width: 100%;
+    top: 0;
+    left: 0;
+   padding: .5rem 1rem;
+   width: 100%;
+   background-color: var(--DT_Success_Color);
+   transition: all .5s ease;
+}
+.logo{
+    width: 9rem;
+
+}
+.logo img{
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+    /* background-image: linear-gradient(to right ,rgba(0, 0, 0, .1), rgba(0, 0, 0, .2)); */
+    /* box-shadow: 0 1rem 1rem rgba(0, 0, 0, .2); */
+}
+.mainNav{
+    display: flex;
+    flex-direction: row;
+    column-gap: 4rem;
+    align-items: center;
+    font-size: 1.2rem;
+}
+.navLinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+    
+}
+.links{
+    color: aliceblue;
+}
+.links:hover{
+    color:#9ACBD0 ;
+}
+.active{
+    color:#9ACBD0 ;
+}
+.active:hover{
+    color:#9ACBD0 ;
+}
+.search{
+    display: flex;
+    align-items: center;
+    column-gap: -1rem;
+    align-items: stretch;
+}
+.search input{
+    padding: .5rem;
+    border: 1px solid orange;
+}
+.search button{
+    padding: .5rem;
+    background: orange;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+    .mainNav{
+        font-size: 1rem;
+        column-gap: 2rem;
+    }
+    .swiperNav{
+        
+        column-gap: 5rem;
+    }
+    .navLinks{
+        display: none;
+        
+        
+    }
+    .search{
+        display: none;
+    }
+    
+  }
+  @media only screen and (max-width: 768px) {
+    .swiperNav{
+        /* background-color: green; */
+        top: 2rem;
+    }
+}
+  @media only screen and (max-width: 400px) {
+    .swiperNav{
+        background-color: green;
+    }
+}

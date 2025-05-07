@@ -1,0 +1,40 @@
+.swiperNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   align-items: center;
+   position: absolute;
+    z-index: 50;
+   top: 0;
+   left: 0;
+   padding: .5rem 1rem;
+   width: 100%;
+   top: 5rem;
+   
+}
+.stickyNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   align-items: center;
+   position: sticky;
+    z-index: 50;
+   top: 0;
+   left: 0;
+   padding: .5rem 1rem;
+   width: 100%;
+   background-color: green;
+}
+
+@media only screen and (max-width: 768px) {
+    .swiperNav{
+        /* background-color: green; */
+        top: 2rem;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .swiperNav{
+        background-color: green;
+        
+    }
+}

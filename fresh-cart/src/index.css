@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss" prefix(tw);
+@plugin "daisyui";
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+    --font-style-header: normal;
+    --font-weight-header: 400;
+    --font-size-header: ;
+    --DTFontTypo_Body: 'League Spartan', sans-serif;
+    --font-head2:"Montserrat Alternates", sans-serif;
+    --font-style-body: normal;
+    --font-weight-body: 400;
+    --font-weight-body--bold: 700;
+    --font-weight-body--bolder: 700;
+    --font-size-body: 17px;
+    --DTFontTypo_Custom: 'Mrs Saint Delafield', cursive;
+    --font-size-additional: 16;
+    --swiper-theme-color: #ff7d09 !important;
+    --DTPrimaryColor: #ff7d09;
+    --DTSecondaryColor: #3f730a;
+    --DTTertiaryColor: #9aa819;
+    --DTBodyBGColor: #ffffff;
+    --DTOverlayColor: rgba(0, 0, 0, 0.5);
+    /* --DTOverlayColor: rgb(255 255 255 / 50%); */
+    --DTLinkColor: #202020;
+    --DTLinkHoverColor: #ff7d09;
+    --DTColor_Body: #202020;
+    --DTColor_Heading: #202020;
+    --DTColor_Border: #8c8c8c;
+    --DT_Error_Color: #D8000C;
+    --DT_Success_Color: #4F8A10;
+    --DT_discount_color: #4f8a10;
+    --DT_Warning_Color: #9F6000;
+    --DT_Info_Color: #31708f;
+    --DT_Blog_Border_Radius: 0px;
+    --DT_Blog_Gutter_Width: 30px;
+    --DT_Blog_BG_Color: rgba(0, 0, 0, 0.4);
+    --DT_Blog_Link_Color: #000000;
+    --DT_Blog_Link_Hover_Color: #ff7d09;
+    --DT_Blog_Text_Color: #262626;
+    --DT_Blog_Icon_Color: rgba(0, 0, 0, 0);
+    --DT_Blog_Button_BG_Color: rgb(63, 115, 10);
+    --DT_Blog_Button_Text_Color: #ffffff;
+    --DT_Blog_Button_BG_Hover_Color: #ff7d09;
+    --DT_Blog_Button_Text_Hover_Color: #ffffff;
+    --DT_Blog_Link_Color_Overlay: #ffffff;
+    --DT_Blog_Link_Hover_Color_Overlay: #7d583b;
+    --DT_Blog_Text_Color_overlay: #ffffff;
+    --DT_Blog_Icon_Color_overlay: #ffffff;
+    --DT_Blog_Button_BG_Color_overlay: #ba8d69;
+    --DT_Blog_Button_Text_Color_overlay: #ffffff;
+    --DT_Blog_Button_BG_Hover_Color_overlay: #7d583b;
+    --DT_Blog_Button_Text_Hover_Color_overlay: #ffffff;
+    --DTFontSizeBase: 17px;
+    --DTFontSize_H1: 60px;
+ 
+}
+@theme{
+ --color-theme-color:#ff7d09;
+ --color-theme-2: #3f730a;
+ --color-dark-Body:#202020;
+ --color-dark-2:#262626;
+ --color-succes:#4F8A10;
+ --color-succes-hover:rgba(79, 138, 16,.8);
+ --bg-wavy: "url('../assets/wavy.svg')",
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.app { height: 100% ;
+  /* background-color: #000000; */
+  width: 100%;
+}
+#root{
+  
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+  width: 100vw;
+  /* overflow-x: hidden; */
+  font-family: var(--DTFontTypo_Body);
+  display: unset;
+  
+  
+}
+html{
+  max-width: 100vw !important;
+  overflow-x: hidden;
+}
+body{
+  background-image: linear-gradient(0deg ,black,black);
+}
+h2{
+  font-family:'Mrs Saint Delafield', cursive !important;
+  text-transform: capitalize;
+  font-size: 4rem;
+ 
+}
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100vh;
+  object-fit:cover;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+}
+/* .slick-slider {
+  margin-inline: -30px; 
+}
+
+.slick-slide >div { 
+    margin-inline: 15px; 
+  } */

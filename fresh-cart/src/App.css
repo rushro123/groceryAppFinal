@@ -1,0 +1,21 @@
+#root{
+  padding: 0;
+  margin: 0;
+}
+.app{
+  width: 100vw;
+  display: unset;
+ 
+  overflow-x: hidden;
+  /* background-color: #000; */
+  position: relative;
+  overflow-x: hidden;
+  transition: all .5s;
+  scroll-behavior: smooth;
+ 
+}
+.AppDisplay{
+  height: 100vh;
+  overflow-y: hidden;
+  display: block;
+}

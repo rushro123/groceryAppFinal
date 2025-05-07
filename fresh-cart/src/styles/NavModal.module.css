@@ -1,0 +1,84 @@
+.Modal{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: none;
+    right: -105%;
+    background-image:linear-gradient(0deg,rgba(0,0,0,.5),rgba(0,0,0,.5));
+    z-index: 1000;
+    top: 0;
+    transition-delay:.5s ;
+    
+    transition: all .5s;
+    
+}
+.ModalBody{
+    position: sticky;
+    /* transition: all .5s; */
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition-delay:.5s ;
+    display: none;
+    height: 100vw;
+    z-index: 10000;
+}
+
+@media only screen and (max-width: 1000px) {
+    .Modal{
+        display: block;
+        transform: scalex(0);
+        transition-delay:.5s ;
+    }
+    .ModalBody{
+        right: -100%;
+        top: 0;
+        z-index: 1000;
+        display: block;
+    }
+    .modalNavHolder{
+        width: min(500px,40vw);
+        height: 100vh;
+        background-color: aliceblue;
+        position: relative;
+        z-index: 1001;
+        margin-left: auto;
+        padding: 2rem 3rem;
+        padding-top:4rem ;
+        transition-delay:1.5s ;
+    }
+    .close{
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid #000;
+        border-radius: 50%;
+        transition: all .7s;
+    }
+    .close:active{
+        transform: rotate(360deg);
+        background-color: #ff7d09;
+    }
+    .close:active svg{
+        fill: #fff;
+    }
+    .close svg{
+        fill: #000;
+        width: 100%;
+        height: 100%;
+    }
+    .MainModal{
+        right: 0;
+        top: 0;
+        display: block;
+        transition: all .5s;
+        transform: scale(1);
+    }
+}
+@media only screen and (max-width: 768px) {
+    .modalNavHolder{
+        width: min(300px,60vw);
+    }
+}
