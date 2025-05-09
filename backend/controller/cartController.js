@@ -5,14 +5,14 @@ export const addItem=async (req,res)=>{
         const {title,quantity,price,category,img}=req.body
         const existingItem=await Cart.findOne({title});
         if(existingItem){
-            return res.status(201).json({messege:"item allready existed"})
+            return res.status(401).json({messege:"item allready existed"})
         }
-        console.log(req.body)
         const Item=new Cart({title,quantity,price,category,img})
         await Item.save()
         res.status(201).json({messege:"item added succesfully",item:Item})
+        console.log(res)
     } catch (error) {
-        res.status(401).json({messege:"failed to add the item"})
+        res.status(401).json({messege:"failed to add the item",error:error.message})
     }
 }
 export const updateItemById=async (req,res)=>{
@@ -56,15 +56,15 @@ export const getFiltertems=async (req,res)=>{
 }
 export const deleteItemById=async (req,res)=>{
     try {
-        const {quantity}=req.body
         const item=await Cart.findByIdAndDelete({_id:req.params.id})
         if(!item){
            return res.status(401).json({messege:"item not found"})
         }
-        res.json(item)
+        res.status(201).json(item)
     } catch (error) {
         res
         .status(500)
         .json({ message: 'Error deleting post', error: error.message })
+        
     }
 }

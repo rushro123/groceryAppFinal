@@ -4,7 +4,7 @@ export const addItem=async (req,res)=>{
     try {
         const {title,price,category,img}=req.body
         
-        const existingItem=new Shop.findOne({title});
+        const existingItem=await Shop.findOne({title});
         if(existingItem){
             return res.status(201).json({messege:"item allready existed"})
         }
@@ -29,8 +29,11 @@ export const getFiltertems=async (req,res)=>{
 }
 export const getAllItems=async (req,res)=>{
     try {
-        
-        const item=await Shop.find()
+        const filter={}
+        if(req.query.category){
+            filter.category={$in:req.query.category}
+        }
+        const item=await Shop.find(filter).exec()
         res.json(item)
     } catch (error) {
         res.status(500).json({ 

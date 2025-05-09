@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken"
 export const register = async (req, res) => {
     try {
         const { name, email, password } = req.body
-        console.log(req.body)
         const existingUser = await User.findOne({ $or: [{ email }, { name }] })
         if (existingUser) {
             return res.status(400).json({ messege: "user allready existed" })
@@ -38,12 +37,13 @@ export const register = async (req, res) => {
         res
             .status(500)
             .json({ message: 'Error registering user', error: error.message })
+        console.log(error)
 
     }
 }
 export const login = async (req, res) => {
     try {
-        const { name, password } = req.body
+        const { email, password } = req.body
 
         const user = await User.findOne({ email })
         if (!user) {
@@ -55,7 +55,6 @@ export const login = async (req, res) => {
         }
         const token = jwt.sign({
             id: user._id,
-            name: user.name,
             email: user.email,
             password: user.password,
         },
@@ -71,7 +70,6 @@ export const login = async (req, res) => {
         maxAge:25*60*60*100,
     }).status(201).json({messege:"user logged in succesfully",user:{
         id:user._id,
-        name:user.name,
         email:user.email
 
     }})
@@ -81,5 +79,5 @@ export const login = async (req, res) => {
 }
 export const logout = (req, res) => {
     res.clearCookie('token')
-    res.json({ message: 'Logged out successfully' })
+    res.status(201).json({ message: 'Logged out successfully' })
   }

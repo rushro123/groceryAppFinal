@@ -94,6 +94,7 @@
       padding: 1.5rem 1rem;
       border-bottom: 1px solid #f0f0f0;
       gap: 1rem;
+      position: relative;
     }
     
     .item-info {
@@ -267,14 +268,16 @@
       flex-wrap: wrap;
       justify-content: center;
       height: 100vh;
-        font-size: 2.5rem;
+      font-size: 2.5rem;
       color: var(--color-theme-2);
       align-items: center;
+      flex-direction: column;
+      row-gap: 2rem;
          
     }
   
     .empty-btn{
-      width: 50%;
+      width: auto;
       padding: 1rem;
       margin-top: 1.5rem;
       background:var( --color-theme-2);
@@ -285,6 +288,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
+      margin: 0 auto;
     }
   
   
@@ -507,3 +511,47 @@
     .checkout-btn {
       transition: all 0.2s ease-in-out;
     }
+.cart-modal{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+  transform: scale(0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+}
+.active-Modal{
+  transform: scale(1);
+  background: rgba(0, 0, 0, 0.5);
+}
+.cart-modal button{
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.cart-modal .succes{
+  background: var(--color-succes);
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.cart-modal .succes:hover{
+  background-color: var(--color-succes-hover);
+  color: white;
+}
+.cart-modal .cancel{
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.cart-modal .cancel:hover{
+  background-color:wheat ;
+  color: #000;
+}

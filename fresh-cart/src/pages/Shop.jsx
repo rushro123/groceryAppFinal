@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useMain } from "../context/MainContext.jsx";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
-
+import api from "../axios.js";
 import {
   Disclosure,
   DisclosureButton,
@@ -26,38 +26,24 @@ import ShopModal from "./shop/ShopModal.jsx";
 import ShopCard from "./shop/ShopCard.jsx";
 const products = DATA.product;
 const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
+  { name: "category", href: "#", current: true },
+  { name: "alpabetically", href: "#", current: false },
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-const subCategories = [
-  { name: "Totes", href: "#" },
-  { name: "Backpacks", href: "#" },
-  { name: "Travel Bags", href: "#" },
-  { name: "Hip Bags", href: "#" },
-  { name: "Laptop Sleeves", href: "#" },
-];
+
 const filters = [
   {
     id: "category",
     name: "category",
     options: [
       { value: "vegetables", label: "vegetables", checked: false },
-      { value: "fruits", label: "fruits", checked: false },
-      { value: "dairy", label: "dairy", checked: true },
-      { value: "non-Veg", label: "non-Veg", checked: false },
+      { value: "fruit", label: "fruit", checked: false },
+      { value: "dairy", label: "dairy", checked: false },
+      { value: "nonVeg", label: "nonVeg", checked: false },
     ],
   },
-  {
-    id: "inStock",
-    name: "In stock",
-    options: [
-      { value: "In-stock", label: "In stock", checked: false },
-      { value: "out-stick", label: "Out of stock", checked: false },
-    ],
-  },
+  
   {
     id: "price",
     name: "price",
@@ -71,10 +57,46 @@ function classNames(...classes) {
 const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { isShopModal, toggleShopModal } = useMain();
+  const [items,setItems]=useState([])
+  const [loading, setLoading] = useState(true);
   const todosPerPage = 8;
-  const totalPages = Math.ceil(products.length / todosPerPage);
+  const totalPages = Math.ceil(items.length / todosPerPage);
   const startIndex = (currentPage - 1) * todosPerPage;
-  const selectedTodos = products.slice(startIndex, startIndex + todosPerPage);
+  const selectedTodos = items.slice(startIndex, startIndex + todosPerPage);
+  const [filter,setFilter]=useState([])
+  const handleFilterChange=(e)=>{
+    
+    if(filter.includes(e.target.value)){
+      setFilter(prev=>prev.filter((item)=>item!==e.target.value))
+      return
+    }
+    setFilter(prev=>[...prev,e.target.value])
+    
+  }
+  const fetchCartItems=async ()=>{
+    try{
+      let queryString=''
+      if(filter.length){
+        filter.map((item)=>{
+          queryString+=`category=${item}&`
+        })
+      }
+      const res=await api.get(`/shop?${queryString}`)
+      console.log("shop res datas",res.data)
+      setItems(res.data)
+      console.log("shop posts",items)
+    }
+    catch(error){
+      console.log(error)
+    }finally{
+      setLoading(false)
+    }
+  }
+  
+  useEffect(()=>{
+    fetchCartItems()
+    console.log(filter)
+  },[filter])
   useEffect(() => {
     if (selectedTodos.length === 0 && currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -161,13 +183,7 @@ const Shop = () => {
               {/* Filters */}
               <form className="tw:hidden tw:lg:flex tw:lg:flex-col tw:gap-y-[1rem]">
                 <h3 className="tw:sr-only">Categories</h3>
-                {/* <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul> */}
+                
 
                 {filters.map((section) => (
                   <Disclosure
@@ -208,6 +224,7 @@ const Shop = () => {
                                     id={`filter-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
                                     type="checkbox"
+                                    onChange={handleFilterChange}
                                     className="tw:col-start-1  tw:row-start-1 tw:appearance-none tw:rounded-sm tw:border tw:border-gray-300 tw:bg-white tw:checked:border-indigo-600 tw:checked:bg-indigo-600 tw:indeterminate:border-indigo-600 tw:indeterminate:bg-indigo-600 tw:focus-visible:outline-2 tw:focus-visible:outline-offset-2 tw:focus-visible:outline-indigo-600 tw:disabled:border-gray-300 tw:disabled:bg-gray-100 tw:disabled:checked:bg-gray-100 tw:forced-colors:appearance-auto"
                                   />
                                   <svg
